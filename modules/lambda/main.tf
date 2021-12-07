@@ -1,3 +1,12 @@
+terraform {
+  required_version = "~> 1.0"
+
+  required_providers {
+    aws     = "~> 3.68"
+    archive = "~> 2.2.0"
+  }
+}
+
 resource "aws_iam_role" "this" {
   name = "${local.prefix}-${var.lambda_name}-iam-role"
 
