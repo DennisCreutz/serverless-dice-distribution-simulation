@@ -30,7 +30,7 @@ exports.handler = async (event, context) => {
 
     // Write to database
     console.log(`Start to write roll results to ${tableName} table...`)
-    const dbResults = await batchWriteRollResults(rollResults, rolls, awsRequestId, tableName)
+    const dbResults = await batchWriteRollResults(rollResults, rolls, die, diceSides, awsRequestId, tableName)
 
     // Stringify doesn't like maps
     result.rollResults = [...rollResults];

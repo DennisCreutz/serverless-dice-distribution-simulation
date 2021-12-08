@@ -2,11 +2,11 @@ const AWS = require('aws-sdk');
 AWS.config.update({ region: 'eu-central-1' });
 const ddb = new AWS.DynamoDB({ apiVersion: '2012-08-10' });
 
-exports.batchWriteRollResults = async (rollResultsMap, rolls, instanceID, tableName) => {
+exports.batchWriteRollResults = async (rollResultsMap, rolls, die, sides, instanceID, tableName) => {
   const putRequests = [{
     PutRequest: {
       Item: {
-        'PK': { 'S': 'ALL' },
+        'PK': { 'S': `${die}#${sides}` },
         'RollInstanceID': { 'S': `${instanceID}` },
         'Rolls': { 'N': `${rolls}` }
       }
