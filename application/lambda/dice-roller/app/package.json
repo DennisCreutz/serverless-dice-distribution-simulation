@@ -1,0 +1,7 @@
+{
+  "name": "dice-roller",
+  "version": "1.0.0",
+  "description": "Lambda function for a dice distribution simulation",
+  "main": "index.js",
+  "license": "ISC"
+}
