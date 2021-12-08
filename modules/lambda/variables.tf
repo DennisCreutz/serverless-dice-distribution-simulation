@@ -54,12 +54,6 @@ variable "runtime" {
   default     = "nodejs14.x"
 }
 
-variable "handler_file_name" {
-  description = "Name of the file for the handler function."
-  type        = string
-  default     = "index.js"
-}
-
 variable "additional_lambda_policy" {
   description = "Additional permissions for the Lambda function, as policy document."
   type        = string
