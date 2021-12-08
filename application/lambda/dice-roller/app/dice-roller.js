@@ -2,8 +2,6 @@ const { rollDie } = require('./service/dice-service');
 const { batchWriteRollResults } = require('./service/dynamodb-service');
 
 exports.handler = async (event, context) => {
-  console.log(context);
-
   // Env parameters
   const tableName = process.env["DYNAMO_DB_NAME"];
 

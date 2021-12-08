@@ -3,22 +3,16 @@ AWS.config.update({ region: 'eu-central-1' });
 const ddb = new AWS.DynamoDB({ apiVersion: '2012-08-10' });
 
 exports.batchWriteRollResults = async (rollResultsMap, rolls, die, sides, instanceID, tableName) => {
-  const putRequests = [{
-    PutRequest: {
-      Item: {
-        'PK': { 'S': `${die}#${sides}` },
-        'RollInstanceID': { 'S': `${instanceID}` },
-        'Rolls': { 'N': `${rolls}` }
-      }
-    }
-  }];
+  const putRequests = [];
 
   rollResultsMap.forEach((value, key) => {
     putRequests.push({
       PutRequest: {
         Item: {
-          'PK': { 'S': `${key}` },
+          'Die-Sides': { 'S': `${die}#${sides}` },
+          'Sum-RollInstanceID': { 'S': `${key}#${instanceID}` },
           'RollInstanceID': { 'S': `${instanceID}` },
+          'Sum': { 'N': `${key}` },
           'Count': { 'N': `${value}` },
           'Rolls': { 'N': `${rolls}` },
         }
