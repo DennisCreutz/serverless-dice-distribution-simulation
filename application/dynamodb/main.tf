@@ -15,18 +15,18 @@ provider "aws" {
 resource "aws_dynamodb_table" "dice_rolls" {
   name           = "${local.prefix}-dice-rolls"
 
-  hash_key       = "PK"
-  range_key      = "RollInstanceID"
+  hash_key       = "Die-Sides"
+  range_key      = "Sum-RollInstanceID"
 
   billing_mode = "PAY_PER_REQUEST"
 
   attribute {
-    name = "PK"
+    name = "Die-Sides"
     type = "S"
   }
 
   attribute {
-    name = "RollInstanceID"
+    name = "Sum-RollInstanceID"
     type = "S"
   }
 
